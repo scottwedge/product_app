@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/sbeno/PRODUCTS_APP/backend/database/db.sqlite3" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3410"/><column_width id="4" width="0"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">select * from product_product;
+/*UPDATE sqlite_sequence SET seq = (SELECT MAX(col) FROM product_product) WHERE name=&quot;product_product&quot;;
+
+delete from account_account;
+delete from sqlite_sequence where name =&quot;account_account&quot;;
+
+
+delete from user_user;
+delete from sqlite_sequence where name =&quot;user_user&quot;;
+
+delete from user_userprofile;
+delete from sqlite_sequence where name =&quot;user_userprofile&quot;;
+
+select * from user_user_groups;
+delete from sqlite_sequence where name =&quot;user_user_groups&quot;;
+
+select * from user_user_roles;
+delete from sqlite_sequence where name =&quot;user_user_roles&quot;;
+
+select * from user_user_user_permissions;
+delete from sqlite_sequence where name =&quot;user_user_user_permissions&quot;;
+
+select * from user_userrole;
+delete from sqlite_sequence where name =&quot;user_userrole&quot;;
+
+select * from user_userprofile;
+delete from sqlite_sequence where name =&quot;user_userprofile&quot;;*/
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

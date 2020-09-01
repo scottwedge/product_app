@@ -1,0 +1,117 @@
+version: '3'
+
+services:
+  # db:
+  #   container_name: postgresdb
+  #   image: postgres:latest
+  #   restart: always
+  #   env_file:
+  #     - project.env
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  web:
+    container_name: django
+    #command: python manage.py runserver 127.0.0.1:8000
+    build:
+      context: .
+      dockerfile: ops/Dockerfile
+
+    command: >
+      gunicorn backend.wsgi:application --bind 127.0.0.1:8000 --workers=4
+    env_file:
+      - project.env
+    expose:
+      - 8000
+    # depends_on:
+    #   - db
+    # volumes:
+    #   - staticfiles:/home/app/web/staticfiles
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    restart: always
+    ports:
+      - 1337:80
+    volumes:
+      - ./ops/nginx:/etc/nginx/conf.d
+      #- staticfiles:/home/app/web/staticfiles/
+    depends_on:
+      - web
+
+# volumes:
+#   postgres-data:
+  # staticfiles:
+
+
+
+
+
+# version: '3.4'
+
+# services:
+
+#   # db:
+#   #   container_name: postgresdb
+#   #   image: postgres:latest
+#   #   # environment:
+#   #   #   - "POSTGRES_HOST_AUTH_METHOD=trust"
+#   #   restart: always
+#   #   # env_file:
+#   #   #   - project.env
+#   #   ports:
+#   #     - 5432:5432
+#   #   volumes:
+#   #     - postgres-data:/var/lib/postgresql/data
+#       #- ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+
+
+#   # sqlite:
+#   #   environment:
+#   #     - DJANGO_SETTINGS_MODULE=settings.BASE
+#   #   #entrypoint: products_app/backend/settings/BASE.py
+#   #   build:
+#   #     context: .
+#   #     dockerfile: ops/Dockerfile
+#   #   depends_on:
+#   #     - memcached
+#   #     - memcached2
+
+#   # memcached: &memcached
+#   #   image: memcached:alpine
+
+#   # memcached2:
+#   #   <<: *memcached
+
+
+#   productsapp:
+#     image: productsapp
+#     container_name: django
+#     command: python manage.py runserver 0.0.0.0:8000
+#     # command: >
+#     #   gunicorn products_app.backend.wsgi:application --bind localhost:8000 --workers=4
+#     # env_file:
+#     #   - project.env
+#     build:
+#       context: .
+#       dockerfile: ops/Dockerfile
+
+#     ports:
+#       - 8000:8000
+#     # depends_on:
+#     #   - sqlite
+#     #   - db
+
+#   nginx:
+#     container_name: nginx
+#     image: nginx:mainline-alpine
+#     restart: always
+#     ports:
+#       - 1337:80
+#     volumes:
+#       - ./ops/nginx:/etc/nginx/conf.d
+#     depends_on:
+#       - productsapp
+# # volumes:
+# #   postgres-data:
