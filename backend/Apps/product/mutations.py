@@ -39,7 +39,7 @@ class RegisterProduct(graphene.Mutation):
 				price=product.price
 			)
 		except IntegrityError as ie:
-			raise GraphQLError(f"An_error_occured: {str(ie)}")
+			raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 		return RegisterProduct(
 			product=new_product,
@@ -84,7 +84,7 @@ class UpdateProduct(graphene.Mutation):
 				existing_product.price=product['price']
 			existing_product.save()
 		except Product.DoesNotExist as ie:
-			raise GraphQLError(f"An_error_occured: {str(ie)}")
+			raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 
 		return UpdateProduct(
@@ -118,7 +118,7 @@ class DeleteProduct(graphene.Mutation):
 			if 'does not exist' in str(ie):
 				raise GraphQLError("Product does not exist!")
 			else:
-				raise GraphQLError(f"An_error_occured:_{str(ie)}")
+				raise GraphQLError(f"An_error_occurred:_{str(ie)}")
 
 		return DeleteProduct(
 			#product=existing_product,

@@ -35,7 +35,7 @@ class CreateAccount(graphene.Mutation):
 				end_date=account.end_date
 			)
 		except IntegrityError as ie:
-			raise GraphQLError(f"An_error_occured: {str(ie)}")
+			raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 		return CreateAccount(account=account, message='New_account_' + account.name + '_has_been_successfully_created')
 
@@ -60,7 +60,7 @@ class UpdateAccount(graphene.Mutation):
 			new_account.end_date=account.end_date
 
 		except IntegrityError as ie:
-			raise GraphQLError(f"An_error_occured: {str(ie)}")
+			raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 		return UpdateAccount(account=new_account, message='Account_' + new_account.name + '_has_been_successfully_updated')
 
@@ -82,7 +82,7 @@ class DeleteAccount(graphene.Mutation):
 				pk=account.id
 			).delete()
 		except IntegrityError as ie:
-			raise GraphQLError(f"An_error_occured: {str(ie)}")
+			raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 		return DeleteAccount(account=account, message='Account_' + account.name + '_has_been_successfully_deleted')
 

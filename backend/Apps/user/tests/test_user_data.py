@@ -4,7 +4,7 @@ from graphql_jwt.testcases import JSONWebTokenTestCase
 from backend.Apps.user.models import User
 
 
-#? Testing creation of a user with minimm firelds required
+#? Testing creation of a user with minimum fields required
 @pytest.fixture
 def create_user(db):
     def make_user(**kwargs):

@@ -74,7 +74,7 @@ class CreateUserRoles(graphene.Mutation):
 			if "error UNIQUE constraint failed:" in str(ie):
 				raise GraphQLError("Roles_already_created!")
 			else:
-				raise GraphQLError(f"An_error_occured: {str(ie)}")
+				raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 
 
@@ -127,7 +127,7 @@ class CreateUser(graphene.Mutation):
 			)
 			print('new account', new_account)
 		except IntegrityError as ie:
-			raise GraphQLError(f"An_error_occured: {str(ie)}")
+			raise GraphQLError(f"An_error_occurred: {str(ie)}")
 
 		username=new_user.username
 		message=f"New_user_{username}_has_been_successfully_created"
@@ -162,7 +162,7 @@ class LoginUser(graphene.Mutation):
 		- adding login attempts limit
 		  and counting the attempts and registering these
 		- adding notification when account is locked to the 
-		exeeded number of login attempts
+		exceeded number of login attempts
 		- etc...
 		'''
 		user = UserInputType()
